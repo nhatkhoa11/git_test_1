@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Women's Day - 20.10</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe4ec, #f3e4ff);
+            color: #a83267;
+            position: relative;
+        }
+
+        /* Dải chữ/Caption chạy chéo nền */
+        .diagonal-container {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            pointer-events: none;
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            transform: rotate(-35deg);
+            opacity: 0.16;
+        }
+
+        .marquee {
+            display: flex;
+            width: max-content;
+            white-space: nowrap;
+            animation: moveDiag 25s linear infinite;
+        }
+
+        .marquee:nth-child(even) {
+            animation-direction: reverse;
+            animation-duration: 30s;
+        }
+
+        .marquee span {
+            font-family: Georgia, serif;
+            font-size: clamp(22px, 4vw, 48px);
+            font-weight: bold;
+            padding-right: 40px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes moveDiag {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Thiệp chính */
+        .card {
+            position: relative;
+            z-index: 1;
+            width: min(90%, 380px);
+            padding: 24px 20px 32px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 22px;
+            box-shadow: 0 15px 35px rgba(168, 50, 103, 0.15);
+        }
+
+        h1 {
+            font-family: Georgia, serif;
+            font-size: 26px;
+            margin-bottom: 4px;
+            color: #a83267;
+        }
+
+        .subtitle {
+            font-size: 13px;
+            margin-bottom: 14px;
+            color: #b76a8d;
+            letter-spacing: 0.5px;
+        }
+
+        /* Khung chứa ảnh tự động co giãn vừa khít chiều ngang */
+        .photo-area {
+            width: fit-content;
+            max-width: 100%;
+            height: 200px;
+            margin: 0 auto 16px auto;
+            border: 2px dashed #e8a3c0;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #fff0f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .photo-area:hover, .photo-area.dragover {
+            border-color: #d94683;
+            transform: scale(1.02);
+        }
+
+        .photo-area img {
+            height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        button {
+            padding: 11px 26px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #e0528e, #d94683);
+            color: white;
+            cursor: pointer;
+            font-size: 13.5px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(217, 70, 131, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #d94683, #a83267);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(168, 50, 103, 0.4);
+        }
+
+        /* Bức thư */
+        #wish {
+            display: none;
+            margin-top: 14px;
+            animation: appear 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            text-align: center;
+        }
+
+        #wish h2 {
+            font-family: Georgia, serif;
+            font-size: 19px;
+            margin-bottom: 8px;
+            color: #a83267;
+        }
+
+        #wish p {
+            font-size: 13.5px;
+            line-height: 1.7;
+            color: #5a3243;
+        }
+
+        .sender-tag {
+            position: absolute;
+            bottom: 10px;
+            right: 16px;
+            font-size: 13px;
+            color: #c47b9b;
+            font-style: italic;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 20px 16px 28px 16px;
+            }
+            .photo-area {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Giữ nguyên cap cũ chuẩn 100% & Đổi dòng 'cười thật nhiều...' -->
+    <div class="diagonal-container">
+        <!-- Dòng 1: Caption cũ chuẩn -->
+        <div class="marquee">
+            <span>Happy Women's Day 🌷 Lê Tiểu Uyên 🌷 Happy Women's Day 🌷 Lê Tiểu Uyên 🌷</span>
+            <span>Happy Women's Day 🌷 Lê Tiểu Uyên 🌷 Happy Women's Day 🌷 Lê Tiểu Uyên 🌷</span>
+        </div>
+        <!-- Dòng 2: Caption mới rạng rỡ -->
+        <div class="marquee">
+            <span>✨ Chúc Uyên mỗi ngày luôn xinh đẹp & bình an ✨ Happy 20/10 ✨</span>
+            <span>✨ Chúc Uyên mỗi ngày luôn xinh đẹp & bình an ✨ Happy 20/10 ✨</span>
+        </div>
+        <!-- Dòng 3: Caption cũ chuẩn -->
+        <div class="marquee">
+            <span>Happy Women's Day 🌷 Lê Tiểu Uyên 🌷 Happy Women's Day 🌷 Lê Tiểu Uyên 🌷</span>
+            <span>Happy Women's Day 🌷 Lê Tiểu Uyên 🌷 Happy Women's Day 🌷 Lê Tiểu Uyên 🌷</span>
+        </div>
+        <!-- Dòng 4: ĐÃ ĐỔI CAPTION MỚI RẤT DỄ THƯƠNG -->
+        <div class="marquee">
+            <span>🌸 Luôn dịu dàng · Luôn tỏa sáng · Happy Vietnamese Women's Day 🌸</span>
+            <span>🌸 Luôn dịu dàng · Luôn tỏa sáng · Happy Vietnamese Women's Day 🌸</span>
+        </div>
+        <!-- Dòng 5: Caption cũ chuẩn -->
+        <div class="marquee">
+            <span>Happy Women's Day 🌷 Lê Tiểu Uyên 🌷 Happy Women's Day 🌷 Lê Tiểu Uyên 🌷</span>
+            <span>Happy Women's Day 🌷 Lê Tiểu Uyên 🌷 Happy Women's Day 🌷 Lê Tiểu Uyên 🌷</span>
+        </div>
+    </div>
+
+    <!-- Nội dung thiệp chính -->
+    <div class="card">
+        <h1>Happy Women's Day 🌷</h1>
+        <p class="subtitle">20 October</p>
+
+        <!-- Khung chứa ảnh -->
+        <div class="photo-area" id="photo-area" onclick="triggerFileInput()">
+            <img id="preview-img" src="anh.jpg" alt="Ảnh của bạn" onerror="this.onerror=null; this.src='https://via.placeholder.com/200x200?text=Bam+vao+de+chon+anh';">
+        </div>
+
+        <!-- Input chọn ảnh ẩn -->
+        <input type="file" id="file-input" accept="image/*" onchange="loadPhoto(event)">
+
+        <button onclick="openWish()">Mở thư chúc 🌷</button>
+
+        <div id="wish">
+            <h2>Lê Tiểu Uyên 🌷</h2>
+            <p>
+                Chúc Tỉu Uyn 20/10 vui vẻ.
+                Chúc Uyn luôn tràn ngập niềm vui, xinh đẹp và hạnh phúc!
+                Mong rằng những điều tuyệt vời nhất sẽ luôn đến với Uyn!
+            </p>
+        </div>
+
+        <div class="sender-tag">
+            From: 🦎
+        </div>
+    </div>
+
+    <script>
+        function openWish() {
+            const wish = document.getElementById("wish");
+            const button = document.querySelector("button");
+
+            wish.style.display = "block";
+            button.style.display = "none";
+        }
+
+        function triggerFileInput() {
+            document.getElementById('file-input').click();
+        }
+
+        function loadPhoto(event) {
+            const file = event.target.files[0];
+            if (file) {
+                displayImage(file);
+            }
+        }
+
+        function displayImage(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.getElementById('preview-img');
+                img.src = e.target.result;
+                img.style.display = 'block';
+            }
+            reader.readAsDataURL(file);
+        }
+
+        const photoArea = document.getElementById('photo-area');
+
+        photoArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            photoArea.classList.add('dragover');
+        });
+
+        photoArea.addEventListener('dragleave', () => {
+            photoArea.classList.remove('dragover');
+        });
+
+        photoArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            photoArea.classList.remove('dragover');
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                displayImage(e.dataTransfer.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>
